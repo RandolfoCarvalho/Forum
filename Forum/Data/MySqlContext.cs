@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Forum.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace Forum.Data
 {
@@ -10,6 +12,7 @@ namespace Forum.Data
 
         }
 
-
+        public DbSet<Topico> Topicos { get; set; }
+        public DbSet<Postagem> Postagens { get; set; }
     }
 }
