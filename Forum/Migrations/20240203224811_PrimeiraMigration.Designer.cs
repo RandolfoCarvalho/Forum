@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20240203174708_PrimeiraMigracao")]
-    partial class PrimeiraMigracao
+    [Migration("20240203224811_PrimeiraMigration")]
+    partial class PrimeiraMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,12 +28,12 @@ namespace Forum.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Conteudo")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<DateTime>("DataPublicacao")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<int>("TopicoId")
                         .HasColumnType("int");
@@ -65,13 +65,11 @@ namespace Forum.Migrations
 
             modelBuilder.Entity("Forum.Models.Postagem", b =>
                 {
-                    b.HasOne("Forum.Models.Topico", "Topico")
+                    b.HasOne("Forum.Models.Topico", null)
                         .WithMany("Postagens")
                         .HasForeignKey("TopicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Topico");
                 });
 
             modelBuilder.Entity("Forum.Models.Topico", b =>

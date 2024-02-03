@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Forum.Data;
+using Forum.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,9 @@ var connection = builder.Configuration["ConnectionStrings:DefaultConnection"];
 builder.Services.AddDbContext<MySqlContext>(options => options.UseMySql(connection,
     new MySqlServerVersion(
         new Version(8, 0, 0))));
+
+//indejcao de dependencias
+builder.Services.AddScoped<PostService>();
 
 var app = builder.Build();
 
@@ -32,5 +36,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    
 app.Run();
