@@ -6,7 +6,6 @@ C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Forum.deps.json
 C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Forum.runtimeconfig.json
 C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Forum.dll
 C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Forum.pdb
-C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.csproj.AssemblyReference.cache
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.GeneratedMSBuildEditorConfig.editorconfig
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.AssemblyInfoInputs.cache
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.AssemblyInfo.cs
@@ -29,3 +28,15 @@ C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\refint\Forum.dll
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.pdb
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.genruntimeconfig.cache
 C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\ref\Forum.dll
+C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.csproj.AssemblyReference.cache
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Humanizer.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Mono.TextTemplating.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\MySqlConnector.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\temp\projetos\Forum\Forum\bin\Debug\net7.0\System.CodeDom.dll
+C:\temp\projetos\Forum\Forum\obj\Debug\net7.0\Forum.csproj.CopyComplete
