@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20240203224811_PrimeiraMigration")]
-    partial class PrimeiraMigration
+    [Migration("20240204170816_SistemaDeRespostas")]
+    partial class SistemaDeRespostas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,6 +31,10 @@ namespace Forum.Migrations
                     b.Property<DateTime>("DataPublicacao")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("TextArea")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Titulo")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -43,6 +47,26 @@ namespace Forum.Migrations
                     b.HasIndex("TopicoId");
 
                     b.ToTable("Postagens");
+                });
+
+            modelBuilder.Entity("Forum.Models.Resposta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostagemId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TextArea")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostagemId");
+
+                    b.ToTable("Respostas");
                 });
 
             modelBuilder.Entity("Forum.Models.Topico", b =>
@@ -70,6 +94,22 @@ namespace Forum.Migrations
                         .HasForeignKey("TopicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Forum.Models.Resposta", b =>
+                {
+                    b.HasOne("Forum.Models.Postagem", "Postagem")
+                        .WithMany("Respostas")
+                        .HasForeignKey("PostagemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Postagem");
+                });
+
+            modelBuilder.Entity("Forum.Models.Postagem", b =>
+                {
+                    b.Navigation("Respostas");
                 });
 
             modelBuilder.Entity("Forum.Models.Topico", b =>

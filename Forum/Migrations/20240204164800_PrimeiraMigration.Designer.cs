@@ -3,6 +3,7 @@ using System;
 using Forum.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20240204164800_PrimeiraMigration")]
+    partial class PrimeiraMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,9 +58,11 @@ namespace Forum.Migrations
                     b.Property<int>("PostagemId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("TextArea")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
-                    b.HasIndex("PostagemId");
+                    b.HasKey("Id");
 
                     b.ToTable("Respostas");
                 });
@@ -87,17 +92,6 @@ namespace Forum.Migrations
                         .HasForeignKey("TopicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Forum.Models.Resposta", b =>
-                {
-                    b.HasOne("Forum.Models.Postagem", "Postagem")
-                        .WithMany()
-                        .HasForeignKey("PostagemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Postagem");
                 });
 
             modelBuilder.Entity("Forum.Models.Topico", b =>

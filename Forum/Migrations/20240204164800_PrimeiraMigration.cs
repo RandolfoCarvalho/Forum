@@ -16,6 +16,22 @@ namespace Forum.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "Respostas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    TextArea = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PostagemId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Respostas", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "Topicos",
                 columns: table => new
                 {
@@ -40,6 +56,8 @@ namespace Forum.Migrations
                     Titulo = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DataPublicacao = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    TextArea = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     TopicoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -65,6 +83,9 @@ namespace Forum.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Postagens");
+
+            migrationBuilder.DropTable(
+                name: "Respostas");
 
             migrationBuilder.DropTable(
                 name: "Topicos");

@@ -34,6 +34,16 @@ namespace Forum.Controllers
             var postagensJogos = ObterPostagensPorTopico(TopicoEnum.Jogos);
             return Ok(postagensJogos);
         }
+        public IActionResult JP()
+        {
+            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.JP);
+            return Ok(postagensJogos);
+        }
+        public IActionResult Med()
+        {
+            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.Med);
+            return Ok(postagensJogos);
+        }
         public IActionResult Index()
         {
             return View();

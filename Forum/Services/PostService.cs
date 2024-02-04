@@ -1,6 +1,7 @@
 ﻿using Forum.Data;
 using Forum.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forum.Services
 {
@@ -15,7 +16,9 @@ namespace Forum.Services
 
         public List<Postagem> FindAll()
         {
-            return _context.Postagens.ToList();
+            return _context
+                .Postagens
+                .ToList();
         }
         public Postagem FindById(int id)
         {
