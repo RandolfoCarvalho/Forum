@@ -17,11 +17,22 @@ namespace Forum.Services
         {
             return _context.Postagens.ToList();
         }
+        public Postagem FindById(int id)
+        {
+            var result = _context.Postagens.SingleOrDefault(p => p.Id == id);
+            return result;
+        }
 
         public async Task InsertAsync(Postagem post)
         {
             _context.Add(post);
             await _context.SaveChangesAsync();
+        }
+        public void Delete(int id)
+        {
+            var result = FindById(id);
+            _context.Remove(result);
+            _context.SaveChanges();
         }
     }
 }

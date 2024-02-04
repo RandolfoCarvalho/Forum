@@ -1,4 +1,5 @@
 ﻿using Forum.Data;
+using Forum.Enums;
 using Forum.Models;
 using Forum.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,6 +41,11 @@ namespace Forum.Controllers
             await _service.InsertAsync(post);
             return RedirectToAction(nameof(Index));
         }
-    }
 
+        public IActionResult Delete(int id)
+        {
+            _service.Delete(id);
+            return RedirectToAction(nameof(Index));
+        }
+    }
 }
