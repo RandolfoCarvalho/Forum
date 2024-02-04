@@ -1,5 +1,6 @@
 ﻿using Forum.Data;
 using Forum.Enums;
+using Forum.Models;
 using Forum.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +16,23 @@ namespace Forum.Controllers
             _context = context;
         }
 
+        private List<Postagem> ObterPostagensPorTopico(TopicoEnum topico)
+        {
+            return _context.Postagens
+                .Where(p => p.TopicoId == (int)topico)
+                .ToList();
+        }
+
         public IActionResult Random()
         {
-            var postagensRandom = _context.Postagens
-                .Where(p => p.TopicoId == (int)TopicoEnum.Random)
-                .ToList();
+            var postagensRandom = ObterPostagensPorTopico(TopicoEnum.Random);
             return Ok(postagensRandom);
+        }
+
+        public IActionResult Jogos()
+        {
+            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.Jogos);
+            return Ok(postagensJogos);
         }
         public IActionResult Index()
         {

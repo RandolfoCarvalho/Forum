@@ -9,6 +9,30 @@
     <link rel="stylesheet" href="~/Forum.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.topic-link').click(function (e) {
+                e.preventDefault();
+
+                var topic = $(this).data('topic');
+
+                // Agora, você pode enviar o valor do tópico para o servidor usando AJAX
+                $.ajax({
+                    url: '/Topico/' + topic,
+                    type: 'GET',
+                    success: function (data) {
+                        // Manipule os dados retornados conforme necessário
+                        console.log(data);
+                    },
+                    error: function () {
+                        // Lide com erros, se necessário
+                        console.error('Erro ao chamar a ação do controlador.');
+                    }
+                });
+            });
+        });
+    </script>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -24,6 +48,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Topico" asp-action="Random">Random</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Topico" asp-action="Jogos">Jogos</a>
                         </li>
                     </ul>
                 </div>
