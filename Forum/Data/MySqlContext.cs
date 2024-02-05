@@ -13,6 +13,8 @@ namespace Forum.Data
         }
         public DbSet<Topico> Topicos { get; set; }
         public DbSet<Postagem> Postagens { get; set; }
-        public DbSet<Resposta> Respostas { get; set; } 
+        public DbSet<Resposta> Respostas { get; set; }
+
+        
     }
 }

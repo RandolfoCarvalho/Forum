@@ -18,6 +18,7 @@ namespace Forum.Services
         {
             return _context
                 .Postagens
+                .Include(p => p.Respostas)
                 .ToList();
         }
         public Postagem FindById(int id)

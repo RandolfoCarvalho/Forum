@@ -3,6 +3,7 @@ using System;
 using Forum.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Forum.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    partial class MySqlContextModelSnapshot : ModelSnapshot
+    [Migration("20240205003042_TentativaDeResposta")]
+    partial class TentativaDeResposta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,10 +58,6 @@ namespace Forum.Migrations
                     b.Property<int>("PostagemId")
                         .HasColumnType("int");
 
-                    b.Property<string>("TextArea")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.HasKey("Id");
 
                     b.HasIndex("PostagemId");
@@ -95,11 +94,13 @@ namespace Forum.Migrations
 
             modelBuilder.Entity("Forum.Models.Resposta", b =>
                 {
-                    b.HasOne("Forum.Models.Postagem", null)
+                    b.HasOne("Forum.Models.Postagem", "Postagem")
                         .WithMany("Respostas")
                         .HasForeignKey("PostagemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Postagem");
                 });
 
             modelBuilder.Entity("Forum.Models.Postagem", b =>
