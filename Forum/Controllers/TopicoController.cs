@@ -41,15 +41,15 @@ namespace Forum.Controllers
 
         public IActionResult Jogos()
         {
-            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Random));
+            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Jogos));
         }
         public IActionResult JP()
         {
-            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Random));
+            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.JP));
         }
         public IActionResult Med()
         {
-            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Random));
+            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Med));
         }
         public IActionResult Index()
         {
