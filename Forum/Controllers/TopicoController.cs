@@ -9,40 +9,41 @@ namespace Forum.Controllers
 {
     public class TopicoController : Controller
     {
-        private readonly MySqlContext _context;
+        private readonly PostService _service;
 
-        public TopicoController(MySqlContext context)
+        public TopicoController(PostService service)
         {
-            _context = context;
+            _service = service;
         }
 
         private List<Postagem> ObterPostagensPorTopico(TopicoEnum topico)
         {
-            return _context.Postagens
-                .Where(p => p.TopicoId == (int)topico)
-                .ToList();
+            var postagem = _service.FindAll();
+            var posts = postagem.Where(p => p.TopicoId == (int)topico).ToList();
+            return posts;
         }
 
+        public IActionResult ObterPostagensPorTopicoAction(TopicoEnum topico)
+        {
+            var postagens = ObterPostagensPorTopico(topico);
+            return Ok(postagens);
+        }
         public IActionResult Random()
         {
-            var postagensRandom = ObterPostagensPorTopico(TopicoEnum.Random);
-            return Ok(postagensRandom);
+            return ObterPostagensPorTopicoAction(TopicoEnum.Random);
         }
 
         public IActionResult Jogos()
         {
-            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.Jogos);
-            return Ok(postagensJogos);
+            return ObterPostagensPorTopicoAction(TopicoEnum.Jogos);
         }
         public IActionResult JP()
         {
-            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.JP);
-            return Ok(postagensJogos);
+            return ObterPostagensPorTopicoAction(TopicoEnum.JP);
         }
         public IActionResult Med()
         {
-            var postagensJogos = ObterPostagensPorTopico(TopicoEnum.Med);
-            return Ok(postagensJogos);
+            return ObterPostagensPorTopicoAction(TopicoEnum.Med);
         }
         public IActionResult Index()
         {
