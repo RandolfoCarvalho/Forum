@@ -5,8 +5,14 @@
         width: 100%;
         border: 1px solid #ddd;
         padding: 10px;
-        margin-bottom: 10px;
         background-color: #f9f9f9;
+        margin-bottom: 9px;
+    }
+
+    .postagem-resposta {
+        border: 1px solid #ddd;
+        background-color: #f9f9f9;
+        padding: 10px;
     }
 
     .info-container {
@@ -24,10 +30,12 @@
 
 @foreach (var item in Model)
 {
+    <hr style="width: 100%;" />
+
     <div class="postagem-container">
         <div class="info-container">
-            <h3>@item.Titulo</h3>
             <p class="small-info">@item.DataPublicacao | TopicoId: @item.TopicoId | ID: @item.Id</p>
+            <h3>@item.Titulo</h3>
         </div>
         <div class="info-container">
             <br><br>
@@ -37,14 +45,16 @@
    
 
     <div>
-        <strong>Respostas:</strong>
         <ul>
             @if (item.Respostas != null && item.Respostas.Any())
             {
                 foreach (var resposta in item.Respostas)
                 {
-                    <div class="resposta-container">
-                    <li>@resposta.TextArea</li>
+                    <div class="postagem-container">
+                    <p class="small-info">ID: @resposta.Id </p>
+                        <div style="margin-bottom: 5px;">
+                            <p>@resposta.TextArea</p>
+                        </div>
             </div>
                 }
             }
