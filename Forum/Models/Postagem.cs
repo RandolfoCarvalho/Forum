@@ -11,7 +11,7 @@ namespace Forum.Models
 
         public string TextArea { get; set; }
         public int TopicoId { get; set; }
-        public virtual List<Resposta> Respostas { get; set; }
+        public virtual List<Resposta> Respostas { get; set; } = new List<Resposta>();
     }
 }
  
