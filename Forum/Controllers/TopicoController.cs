@@ -35,7 +35,7 @@ namespace Forum.Controllers
         }
         public IActionResult Random()
         {
-            return Ok(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Random));
+            return View(ObterPostagensOrdenadasPorRespostas(TopicoEnum.Random));
            
         }
 

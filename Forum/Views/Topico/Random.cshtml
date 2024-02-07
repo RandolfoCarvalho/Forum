@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Forum.Models.Postagem>
+
+<style>
+    .postagem-container {
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .info-container {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    .small-info {
+        font-size: smaller;
+        margin: 0;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
+
+@foreach (var item in Model)
+{
+    <div class="postagem-container">
+        <div class="info-container">
+            <h3>@item.Titulo</h3>
+            <p class="small-info">@item.DataPublicacao | TopicoId: @item.TopicoId | ID: @item.Id</p>
+        </div>
+        <div class="info-container">
+            <br><br>
+            <p>@item.TextArea</p>
+        </div>
+    </div>
+   
+
+    <div>
+        <strong>Respostas:</strong>
+        <ul>
+            @if (item.Respostas != null && item.Respostas.Any())
+            {
+                foreach (var resposta in item.Respostas)
+                {
+                    <div class="resposta-container">
+                    <li>@resposta.TextArea</li>
+            </div>
+                }
+            }
+            else
+            {
+        <li>Nenhuma resposta disponível.</li>
+            }
+            </ul>
+        </div>
+}
