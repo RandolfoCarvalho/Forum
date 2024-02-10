@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<Forum.Models.Postagem>
 
 <style>
+    body {
+        background-color: #FFFFEE;
+    }
     .postagem-container {
         width: 100%;
         border: 1px solid #ddd;
@@ -50,7 +53,7 @@
             {
                 foreach (var resposta in item.Respostas)
                 {
-                    <div class="postagem-container">
+                    <div style="background-color: #F0E0D6;" class="postagem-container">
                     <p class="small-info">ID: @resposta.Id </p>
                         @if(resposta.RespostaId != null)
                         {
